@@ -1,0 +1,22 @@
+{
+  "name": "magalu-teste-frontend",
+  "version": "1.0.0",
+  "description": "Magalu - Teste Frontend",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielleme00/magalu-teste-frontend.git"
+  },
+  "author": "Gabriel Leme",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gabrielleme00/magalu-teste-frontend/issues"
+  },
+  "homepage": "https://github.com/gabrielleme00/magalu-teste-frontend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

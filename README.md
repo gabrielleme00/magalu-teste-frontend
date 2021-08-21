@@ -1,2 +1,2 @@
-# magalu-teste-frontend
-Magalu - Teste Frontend
+# wishlist
+Simple wishlist example
