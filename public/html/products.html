@@ -5,14 +5,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MagaNets - Produtos</title>
+    <title>MyStore - Produtos</title>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <header></header>
-    <nav></nav>
-    <section></section>
-    <footer></footer>
+    <header>
+        <a class="header-title" href="/">
+            <h1>MyStore</h1>
+        </a>
+        <div class="header-info">
+            <div class="above-search-box">
+                <a href="#">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    Cidade: São Paulo
+                </a>
+                <a href="#">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    Central de atendimento
+                </a>
+                <a href="/wishlist">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    Lista de desejos
+                </a>
+            </div>
+            <div class="search-box-wrapper">
+                <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                <input type="text" name="searchBox" id="searchBox" placeholder="Busca">
+            </div>
+        </div>
+    </header>
+    <nav>
+        <h2 class="nav-current-route">Home</h2>
+    </nav>
+    <main></main>
+    <footer>
+        <p>
+            Gabriel de O. Leme
+            <i class="fa fa-hand-spock-o" aria-hidden="true"></i>
+            2021
+        </p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

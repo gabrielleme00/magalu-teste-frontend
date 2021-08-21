@@ -8,12 +8,14 @@ const views = {
     products: path.join(__dirname, '/public/html/products.html')
 };
 
+app.use(express.static(__dirname + '/public/'));
+
 app.get('/', (req, res) => {
     res.sendFile(views.products);
 });
 
 app.get('/wishlist', (req, res) => {
-    res.send('Wishlist');
+    res.sendFile(views.products);
 });
 
 app.listen(port, () => {
