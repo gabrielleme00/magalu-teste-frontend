@@ -1,18 +1,18 @@
-const fetch = require('node-fetch');
+require('dotenv').config();
 
+const fetch = require('node-fetch');
 const express = require('express');
 const path = require('path');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 const views = {
     products: path.join(__dirname, '/public/html/products.html')
 };
 
-const productsAPI = "https://run.mocky.io/v3/";
 const productsEndpoint = "66063904-d43c-49ed-9329-d69ad44b885e";
-const productsURL = productsAPI + productsEndpoint;
+const productsURL = process.env.PRODUCTS_API_URL + productsEndpoint;
 
 app.use(express.static(__dirname + '/public/'));
 
