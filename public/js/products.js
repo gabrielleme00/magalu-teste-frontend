@@ -1,4 +1,8 @@
-const getProducts = () => getJSON('/products');
+const getProducts = search => {
+    search = search ? search : '';
+    return getJSON('/api/products/' + search);
+}
+const getWishlist = userId => getJSON('/api/products/wishlist/' + userId);
 
 const newCard = product => {
     const card = document.createElement('div');
@@ -45,4 +49,17 @@ const createProductCard = product => {
     });
 
     document.querySelector('main').appendChild(card);
+}
+
+const addProductsToDOM = products => {
+    document.querySelector('main').innerHTML = '';
+    products.forEach(createProductCard);
+}
+
+const loadProducts = search => {
+    getProducts(search).then(res => addProductsToDOM(res.products));
+}
+
+const loadWishlist = userId => {
+    getWishlist(userId).then(res => addProductsToDOM(res.products));
 }
