@@ -24,7 +24,27 @@ app.get('/wishlist', (req, res) => {
     res.sendFile(views.products);
 });
 
-app.get('/products', (req, res) => {
+app.get('/api/products', (req, res) => {
+    fetch(productsURL)
+        .then(res => res.json())
+        .then(json => res.json(json));
+});
+
+app.get('/api/products/:search', (req, res) => {
+    const search = req.params.search.toLowerCase().trim();
+    if (!search) res.redirect('/products/');
+
+    fetch(productsURL)
+        .then(res => res.json())
+        .then(json => {
+            json.products = json.products.filter(product => {
+                return product.title.toLowerCase().includes(search);
+            });
+            res.json(json);
+        });
+});
+
+app.get('/api/products/wishlist/:userId', (req, res) => {
     fetch(productsURL)
         .then(res => res.json())
         .then(json => res.json(json));
