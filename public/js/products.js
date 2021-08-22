@@ -4,12 +4,31 @@ const getProducts = search => {
 }
 const getWishlist = userId => getJSON('/api/products/wishlist/' + userId);
 
+const wishlistAdd = productId => {
+
+}
+
+const wishlistRemove = productId => {
+    
+}
+
+const toggleWishlist = (productId, ribbon) => {
+    // Toggle active state
+    const activeClassName = 'active';
+    ribbon.classList.toggle(activeClassName);
+
+    // Add or remove from wishlist based on the new state
+    const isActive = ribbon.classList.contains(activeClassName);
+    isActive ? wishlistAdd(productId) : wishlistRemove(productId);
+}
+
 const newCard = product => {
     const card = document.createElement('div');
     card.className = 'product';
 
     const ribbon = document.createElement('div');
     ribbon.className = 'wishlist-ribbon';
+    ribbon.addEventListener('click', () => toggleWishlist(product.id, ribbon));
 
     const heart = document.createElement('i');
     heart.setAttribute('aria-hidden', 'true');
