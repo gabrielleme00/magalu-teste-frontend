@@ -1,9 +1,4 @@
-const productsAPI = "https://run.mocky.io/v3/";
-const productsEndpoint = "66063904-d43c-49ed-9329-d69ad44b885e";
-const productsURL = productsAPI + productsEndpoint;
-
-// TODO -> Passar a consulta para o backend
-const getProducts = () => getJSON(productsURL);
+const getProducts = () => getJSON('/products');
 
 const newCard = product => {
     const card = document.createElement('div');
