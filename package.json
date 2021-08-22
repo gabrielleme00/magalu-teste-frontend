@@ -1,5 +1,5 @@
 {
-  "name": "magalu-teste-frontend",
+  "name": "wishlist",
   "version": "1.0.0",
   "description": "Magalu - Teste Frontend",
   "main": "server.js",
@@ -8,15 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gabrielleme00/magalu-teste-frontend.git"
+    "url": "git+https://github.com/gabrielleme00/wishlist.git"
   },
   "author": "Gabriel Leme",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gabrielleme00/magalu-teste-frontend/issues"
+    "url": "https://github.com/gabrielleme00/wishlist/issues"
   },
-  "homepage": "https://github.com/gabrielleme00/magalu-teste-frontend#readme",
+  "homepage": "https://github.com/gabrielleme00/wishlist#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.12"
   }
 }

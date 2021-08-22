@@ -1,2 +1,3 @@
 # wishlist
-Simple wishlist example
+Simple wishlist example.
+![Screenshot](./screenshot.png)
