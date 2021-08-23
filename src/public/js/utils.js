@@ -18,3 +18,9 @@ const getURLParam = (name, url = window.location.href) => {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+const showLoading = show => {
+    const loading = document.getElementById('loading');
+    if (show) loading.style.display = 'block';
+    else loading.style.display = 'none';
+}
