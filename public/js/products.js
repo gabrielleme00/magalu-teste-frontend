@@ -2,14 +2,49 @@ const getProducts = search => {
     search = search ? search : '';
     return getJSON('/api/products/' + search);
 }
-const getWishlist = userId => getJSON('/api/products/wishlist/' + userId);
+const getWishlist = userId => {
+    return getJSON('/api/products/wishlist/' + userId).then(json => {
+        const wishlist = getLocalWishlist();
+        json.products = json.products.filter(product => {
+            return wishlist.indexOf(product.id) >= 0;
+        });
+        json.products = json.products.map(product => {
+            product.wishlisted = true;
+            return product;
+        })
+        return json;
+    });
+};
+
+const getLocalWishlist = () => {
+    try {
+        const wishlist = window.localStorage.getItem('wishlist');
+        return wishlist ? JSON.parse(wishlist) : null;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
+
+const setLocalWishlist = wishlist => {
+    if (Array.isArray(wishlist)) wishlist = JSON.stringify(wishlist);
+    window.localStorage.setItem('wishlist', wishlist);
+}
 
 const wishlistAdd = productId => {
-
+    let wishlist = getLocalWishlist();
+    if (!wishlist || !Array.isArray(wishlist)) wishlist = [];
+    if (wishlist.indexOf(productId) >= 0) return;
+    wishlist.push(productId);
+    setLocalWishlist(wishlist);
 }
 
 const wishlistRemove = productId => {
-    
+    let wishlist = getLocalWishlist();
+    if (!wishlist || !Array.isArray(wishlist)) return;
+    if (wishlist.indexOf(productId) === -1) return;
+    wishlist = wishlist.filter(wishlisted => wishlisted !== productId);
+    setLocalWishlist(wishlist);
 }
 
 const toggleWishlist = (productId, ribbon) => {
@@ -28,6 +63,7 @@ const newCard = product => {
 
     const ribbon = document.createElement('div');
     ribbon.className = 'wishlist-ribbon';
+    if (product.wishlisted) ribbon.className += ' active';
     ribbon.addEventListener('click', () => toggleWishlist(product.id, ribbon));
 
     const heart = document.createElement('i');
@@ -60,13 +96,9 @@ const createProductCard = product => {
 
     let price = product.price;
     price = currency === 'BRL' ? floatToBRL(price) : `${format} ${price}`;
+    product.price = price;
 
-    const card = newCard({
-        image: product.image,
-        title: product.title,
-        price: price
-    });
-
+    const card = newCard(product);
     document.querySelector('main').appendChild(card);
 }
 
