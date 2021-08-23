@@ -93,6 +93,12 @@ header {
         text-align: center;
     }
 
+    i:hover {
+        cursor: pointer;
+        opacity: 0.8;
+        transition: 200ms;
+    }
+
     input {
         border: none;
         width: 100%;
@@ -190,7 +196,7 @@ footer {
     text-align: center;
 }
 
-/* Loading */
+/* Loading (https://loading.io/css/) */
 
 .lds-roller {
     display: inline-block;

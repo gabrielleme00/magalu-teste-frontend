@@ -82,6 +82,11 @@ header a:hover {
   width: 3em;
   text-align: center;
 }
+.search-box-wrapper i:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 200ms;
+}
 .search-box-wrapper input {
   border: none;
   width: 100%;
@@ -169,7 +174,7 @@ footer {
   text-align: center;
 }
 
-/* Loading */
+/* Loading (https://loading.io/css/) */
 .lds-roller {
   display: inline-block;
   position: relative;
