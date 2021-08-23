@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const views = require('./views/products-view');
+const pagesController = require('./controllers/pages-controller');
 const productsController = require('./controllers/products-controller');
 
 // Views
-router.get('/', views.getProducts);
-router.get('/wishlist', views.getWishlist);
+router.get('/', pagesController.getProducts);
+router.get('/wishlist', pagesController.getWishlist);
 
 // API Controllers
 router.get('/api/products', productsController.getAll);
