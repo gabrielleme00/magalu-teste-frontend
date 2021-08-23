@@ -4,8 +4,8 @@
   "description": "Magalu - Teste Frontend",
   "main": "server.js",
   "scripts": {
-    "sass": "sass --watch public/css/style.scss public/css/style.css",
-    "start": "nodemon --exec babel-node server.js",
+    "sass": "sass --watch src/public/css/style.scss src/public/css/style.css",
+    "start": "nodemon --exec babel-node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
