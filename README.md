@@ -6,8 +6,7 @@ Este é um teste demonstrativo da construção de duas
 páginas simples com a funcionalidade de uma wishlist.
 ## 🚀 Demo
 
-Link para demonstração
-
+[Veja aqui!](https://listadedesejos.herokuapp.com/)
   
 ## 🛠 Tecnologia
 
@@ -25,7 +24,6 @@ Link para demonstração
 - Express
 - Dotenv
 - Node fetch
-
   
 ## ⤵️ Instalação
 
