@@ -1,6 +1,6 @@
 const setRoute = route => {
     const navCurrentRoute = document.getElementById('nav-current-route');
-    navCurrentRoute.innerText = route;
+    navCurrentRoute.innerHTML = route;
 }
 
 const setupSearch = () => {
@@ -21,12 +21,12 @@ const main = () => {
 
     switch (path) {
         case '/':
-            setRoute('Home');
+            setRoute('<a href="/">Home</a>');
             if (search) loadProducts(search);
             else loadProducts();
             break;
         case '/wishlist':
-            setRoute('Home > Wishlist');
+            setRoute('<a href="/">Home</a> > <a href="/wishlist">Wishlist</a>');
             const userId = '123';
             loadWishlist(userId);
             break;

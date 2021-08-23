@@ -1,4 +1,5 @@
 const getProducts = search => {
+    showLoading(true);
     search = search ? search : '';
     return getJSON('/api/products/' + search).then(json => {
         const wishlist = getLocalWishlist();
@@ -10,6 +11,7 @@ const getProducts = search => {
     });
 }
 const getWishlist = userId => {
+    showLoading(true);
     return getJSON('/api/products/wishlist/' + userId).then(json => {
         const wishlist = getLocalWishlist();
         json.products = json.products.filter(product => {
@@ -112,6 +114,7 @@ const createProductCard = product => {
 const addProductsToDOM = products => {
     document.querySelector('main').innerHTML = '';
     products.forEach(createProductCard);
+    showLoading(false);
 }
 
 const loadProducts = search => {
