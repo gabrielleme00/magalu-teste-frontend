@@ -1,4 +1,27 @@
+/* Variables */
+
 $primary-color: #5A2D82;
+
+/* Responsiveness */
+
+@media only screen and (max-width: 1280px) {
+    header {
+        flex-direction: column;
+    }
+    header, nav, main, footer {
+        padding-left: 5em !important;
+        padding-right: 5em !important;
+    }
+    .product {
+        max-width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .above-search-box {
+        flex-direction: column;
+    }
+}
 
 /* General */
 
@@ -19,7 +42,6 @@ header {
     background-color: $primary-color;
     color: #FFF;
     display: flex;
-    flex-direction: row;
     padding-top: 40px;
     padding-bottom: 40px;
 
@@ -48,7 +70,6 @@ header {
 
 .above-search-box {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     margin-bottom: 1em;
     
@@ -99,10 +120,11 @@ main {
     background-color: #FFF;
     border: 1px solid #BBB;
     border-radius: 4px;
+    display: flex;
+    flex-direction: column;
     flex: 1 20%;
     margin: 2%;
-    max-width: 21%; /* 25% (4/row) - 4% (horizontal padding) */
-    min-height: 400px;
+    max-width: 21%; /* 25% (4/row) - 4% (horizontal margin) */
 
     .wishlist-ribbon {
         background-color: #000;
@@ -141,6 +163,7 @@ main {
     color: #555;
     text-align: center;
     padding: 0 10px 0 10px;
+    overflow-wrap: break-word;
 }
 
 .product-price {
