@@ -26,7 +26,7 @@ const getWishlist = userId => {
 const getLocalWishlist = () => {
     try {
         const wishlist = window.localStorage.getItem('wishlist');
-        return wishlist ? JSON.parse(wishlist) : null;
+        return wishlist ? JSON.parse(wishlist) : [];
     } catch (error) {
         console.log(error);
         return null;
