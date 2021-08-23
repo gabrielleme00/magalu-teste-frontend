@@ -1,6 +1,13 @@
 const getProducts = search => {
     search = search ? search : '';
-    return getJSON('/api/products/' + search);
+    return getJSON('/api/products/' + search).then(json => {
+        const wishlist = getLocalWishlist();
+        json.products = json.products.map(product => {
+            product.wishlisted = wishlist.indexOf(product.id) >= 0;
+            return product;
+        })
+        return json;
+    });
 }
 const getWishlist = userId => {
     return getJSON('/api/products/wishlist/' + userId).then(json => {
