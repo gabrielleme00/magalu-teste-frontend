@@ -19,6 +19,7 @@ const getWishlist = userId => {
         });
         json.products = json.products.map(product => {
             product.wishlisted = true;
+            product.canRemove = true;
             return product;
         })
         return json;
@@ -66,18 +67,39 @@ const toggleWishlist = (productId, ribbon) => {
     isActive ? wishlistAdd(productId) : wishlistRemove(productId);
 }
 
+const removeCard = (productId, card) => {
+    wishlistRemove(productId);
+    document.querySelector('main').removeChild(card);
+}
+
 const newCard = product => {
     const card = document.createElement('div');
     card.className = 'product';
 
-    const ribbon = document.createElement('div');
-    ribbon.className = 'wishlist-ribbon';
-    if (product.wishlisted) ribbon.className += ' active';
-    ribbon.addEventListener('click', () => toggleWishlist(product.id, ribbon));
+    if (product.canRemove) {
+        const cross = document.createElement('div');
+        cross.className = 'wishlist-cross';
+        cross.addEventListener('click', () => removeCard(product.id, card));
 
-    const heart = document.createElement('i');
-    heart.setAttribute('aria-hidden', 'true');
-    heart.className = 'fa fa-heart';
+        const circle = document.createElement('i');
+        circle.setAttribute('aria-hidden', 'true');
+        circle.className = 'fa fa-times-circle fa-lg';
+
+        cross.appendChild(circle);
+        card.appendChild(cross);
+    } else {
+        const ribbon = document.createElement('div');
+        ribbon.className = 'wishlist-ribbon';
+        if (product.wishlisted) ribbon.className += ' active';
+        ribbon.addEventListener('click', () => toggleWishlist(product.id, ribbon));
+
+        const heart = document.createElement('i');
+        heart.setAttribute('aria-hidden', 'true');
+        heart.className = 'fa fa-heart';
+
+        ribbon.appendChild(heart);
+        card.appendChild(ribbon);
+    }
 
     const img = document.createElement('img');
     img.setAttribute('src', product.image);
@@ -89,9 +111,6 @@ const newCard = product => {
     const priceTag = document.createElement('p');
     priceTag.className = 'product-price';
     priceTag.innerText = product.price;
-
-    ribbon.appendChild(heart);
-    card.appendChild(ribbon);
     card.appendChild(img);
     card.appendChild(title);
     card.appendChild(priceTag);
@@ -122,5 +141,12 @@ const loadProducts = search => {
 }
 
 const loadWishlist = userId => {
-    getWishlist(userId).then(res => addProductsToDOM(res.products));
+    getWishlist(userId).then(res => {
+        const hasProducts = res.products.length > 0;
+        if (hasProducts) return addProductsToDOM(res.products);
+        const p = document.createElement('p');
+        p.innerText = 'Ops, não encontramos nada...'
+        document.querySelector('main').appendChild(p);
+        showLoading(false);
+    });
 }
