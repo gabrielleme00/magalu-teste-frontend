@@ -20,6 +20,9 @@ $primary-color: #5A2D82;
 @media only screen and (max-width: 720px) {
     .above-search-box {
         flex-direction: column;
+        a {
+            margin: 10px 0 5px 0;
+        }
     }
 }
 
@@ -137,6 +140,24 @@ main {
     flex-direction: column;
     width: 250px;
     margin-top: 10px;
+
+    .wishlist-cross {
+        background-color: #FFF;
+        border-radius: 100%;
+        color: #000;
+        margin-top: 10px;
+        margin-left: 220px;
+        position: absolute;
+        height: 1em;
+        width: 1em;
+        transition-duration: 100ms;
+    }
+
+    .wishlist-cross:hover {
+        cursor: pointer;
+        opacity: 0.8;
+        transition-duration: 100ms;
+    }
 
     .wishlist-ribbon {
         background-color: #000;
