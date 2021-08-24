@@ -34,7 +34,7 @@ const main = () => {
             else loadProducts();
             break;
         case '/wishlist':
-            setRoute('<a href="/">Home</a> > <a href="/wishlist">Wishlist</a>');
+            setRoute('<a href="/">Home</a> > <a href="/wishlist">Lista de Desejos</a>');
             const userId = '123';
             loadWishlist(userId);
             document.querySelector('#linkWishlist i').style.color = 'red';
